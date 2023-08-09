@@ -6,7 +6,7 @@
 /*   By: nmoreira <nmoreira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:46:04 by nmoreira          #+#    #+#             */
-/*   Updated: 2023/07/22 16:46:04 by nmoreira         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:40:15 by nmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static int map_rows(t_file *file, char *filemap)
 		if (!empty_line(line))
 			i += 1;
 		free(line);
+		if (i == 6)
+			break;
 		line = get_next_line(file->fd3);
 	}
 	// printf("file no %s\n", file->no);
@@ -90,7 +92,7 @@ static int map_rows(t_file *file, char *filemap)
 	// printf("file ea %s\n", file->ea);
 	rows = ft_get_map(file, 0);
 	ft_map_trimed(file);
-	free (line);
+	//free (line);
 	return (rows);
 }
 
