@@ -32,12 +32,38 @@ char	*ft_strdup_cub(const char *str)
 	return (dest);
 }
 
+// int	ft_checkfile(char *filemap, char *extension)
+// {
+// 	size_t	i;
+// 	size_t	j;
+// 	int		len_file;
+// 	char	ext[4];
+
+// 	i = 4;
+// 	j = 0;
+// 	len_file = ft_strlen(filemap);
+// 	while (i > 0)
+// 	{
+// 		ext[j] = filemap[len_file - i];
+// 		j++;
+// 		i--;
+// 	}
+// 	if (ft_strncmp(extension, ext, 4) != 0)
+// 	{
+// 		write(1, "\033[0;34mError!\033[0\n", 18);
+// 		write(1, "\033[0;34mInvalid map extension!\033[0\n", 34);
+// 		return (1);
+// 	}
+// 	return (0);
+// }
+
 int	ft_checkfile(char *filemap, char *extension)
 {
 	size_t	i;
 	size_t	j;
 	int		len_file;
 	char	ext[4];
+	char	*initfile;
 
 	i = 4;
 	j = 0;
@@ -54,6 +80,18 @@ int	ft_checkfile(char *filemap, char *extension)
 		write(1, "\033[0;34mInvalid map extension!\033[0\n", 34);
 		return (1);
 	}
+	/*alteração***************************************************/
+	initfile = ft_substr(filemap, 7, len_file - 11);
+	if (ft_strlen(initfile) == 0)
+	{
+		write(1, "\033[0;34mError!\033[0\n", 18);
+		write(1, "\033[0;34mInvalid map filename!\033[0\n", 34);
+		free(initfile);
+		return (1);
+	}
+	free(initfile);
+	// printf("%s\n", initfile);
+	/*alteração***************************************************/
 	return (0);
 }
 

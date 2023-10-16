@@ -58,7 +58,9 @@ int	main(int argc, char **argv)
 	t_root	game;
 	t_file	file;
 
-	check_path(argc, argv);
+	// check_path(argc, argv);
+	if (check_path(argc, argv))
+		return (1);
 	if (ft_parser(&file, argv[1]))
 	{
 		ft_free_sfile(&file);
